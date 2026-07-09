@@ -3,16 +3,15 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rose Galaxy — For You ❤️</title>
+    <title>Rose Galaxy — Forever Yours ❤️</title>
     <style>
-        /* ── reset & fullscreen ── */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         body {
-            background: #05030f;
+            background: #0a0618;
             overflow: hidden;
             font-family: 'Georgia', 'Times New Roman', serif;
             height: 100vh;
@@ -28,7 +27,6 @@
             z-index: 1;
         }
 
-        /* ── overlay text ── */
         .overlay {
             position: fixed;
             z-index: 10;
@@ -43,60 +41,88 @@
             justify-content: center;
             text-align: center;
             color: #fff;
-            text-shadow: 0 0 40px rgba(255, 80, 150, 0.5), 0 0 80px rgba(200, 50, 120, 0.3);
+            text-shadow: 0 0 60px rgba(255, 50, 100, 0.6), 0 0 120px rgba(200, 30, 80, 0.3);
             opacity: 0;
-            animation: fadeInText 4s ease forwards 3s;
+            animation: fadeInText 4.5s ease forwards 3s;
             padding: 1.5rem;
         }
+
         .overlay h1 {
-            font-size: clamp(2.4rem, 10vw, 5.6rem);
+            font-size: clamp(2.8rem, 12vw, 6.2rem);
             font-weight: 700;
-            letter-spacing: 0.06em;
-            background: linear-gradient(135deg, #ffb3d9, #ff6b9d, #ff2d6a, #ffb3d9);
-            background-size: 300% 300%;
+            letter-spacing: 0.08em;
+            background: linear-gradient(135deg, #ffd9e6, #ff7aa8, #ff3b6f, #ffb3d9, #ffd9e6);
+            background-size: 400% 400%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: shimmer 6s ease-in-out infinite alternate;
-            margin-bottom: 0.2em;
+            animation: shimmer 8s ease-in-out infinite alternate;
+            margin-bottom: 0.15em;
             font-family: 'Georgia', 'Times New Roman', serif;
         }
-        .overlay h2 {
-            font-size: clamp(1rem, 3vw, 1.8rem);
+
+        .overlay .subtitle {
+            font-size: clamp(1rem, 3.2vw, 2rem);
             font-weight: 300;
-            letter-spacing: 0.25em;
-            color: rgba(255, 220, 240, 0.85);
-            text-shadow: 0 0 30px rgba(255, 100, 180, 0.4);
+            letter-spacing: 0.35em;
+            color: rgba(255, 210, 235, 0.9);
+            text-shadow: 0 0 40px rgba(255, 80, 160, 0.5);
             margin-top: 0.2em;
             font-style: italic;
         }
-        .overlay .heart-symbol {
-            font-size: clamp(2rem, 5vw, 4rem);
-            margin-top: 0.5em;
-            display: inline-block;
-            animation: pulseHeart 1.8s ease-in-out infinite;
-            filter: drop-shadow(0 0 30px rgba(255, 50, 100, 0.8));
+
+        .overlay .heart-row {
+            margin-top: 0.6em;
+            font-size: clamp(2.2rem, 5vw, 4.5rem);
+            display: flex;
+            gap: 0.5em;
+            align-items: center;
+            justify-content: center;
+            filter: drop-shadow(0 0 40px rgba(255, 50, 100, 0.7));
         }
-        .overlay .sub-message {
-            font-size: clamp(0.8rem, 1.6vw, 1.2rem);
-            color: rgba(255, 200, 230, 0.6);
-            letter-spacing: 0.15em;
-            margin-top: 1.2em;
+
+        .overlay .heart-row span {
+            display: inline-block;
+            animation: pulseHeart 2s ease-in-out infinite;
+        }
+
+        .overlay .heart-row span:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+        .overlay .heart-row span:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        .overlay .message {
+            font-size: clamp(0.85rem, 1.6vw, 1.3rem);
+            color: rgba(255, 200, 225, 0.7);
+            letter-spacing: 0.12em;
+            margin-top: 1.4em;
             font-style: italic;
             font-weight: 300;
-            max-width: 600px;
-            line-height: 1.6;
+            max-width: 640px;
+            line-height: 1.7;
+            text-shadow: 0 0 30px rgba(200, 50, 120, 0.3);
+        }
+
+        .overlay .tiny {
+            font-size: clamp(0.6rem, 1vw, 0.85rem);
+            color: rgba(255, 180, 210, 0.4);
+            margin-top: 1.8em;
+            letter-spacing: 0.2em;
+            font-style: normal;
         }
 
         @keyframes fadeInText {
             0% {
                 opacity: 0;
-                transform: scale(0.96) translateY(20px);
+                transform: scale(0.95) translateY(30px);
             }
             100% {
                 opacity: 1;
                 transform: scale(1) translateY(0);
             }
         }
+
         @keyframes shimmer {
             0% {
                 background-position: 0% 50%;
@@ -105,17 +131,17 @@
                 background-position: 100% 50%;
             }
         }
+
         @keyframes pulseHeart {
             0%,
             100% {
                 transform: scale(1);
             }
             50% {
-                transform: scale(1.25);
+                transform: scale(1.3);
             }
         }
 
-        /* ── subtle vignette ── */
         .vignette {
             position: fixed;
             z-index: 2;
@@ -124,153 +150,168 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            background: radial-gradient(ellipse at center, transparent 40%, rgba(5, 3, 15, 0.55) 100%);
+            background: radial-gradient(ellipse at center, transparent 30%, rgba(10, 6, 24, 0.6) 100%);
         }
 
-        /* ── tiny responsive tweaks ── */
         @media (max-width: 600px) {
             .overlay h1 {
-                letter-spacing: 0.02em;
+                letter-spacing: 0.03em;
             }
-            .overlay h2 {
-                letter-spacing: 0.12em;
+            .overlay .subtitle {
+                letter-spacing: 0.18em;
+            }
+            .overlay .heart-row {
+                font-size: 2.5rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- canvas -->
     <canvas id="canvas"></canvas>
-
-    <!-- vignette overlay -->
     <div class="vignette"></div>
 
-    <!-- text overlay -->
     <div class="overlay">
-        <h1>For You, My Love</h1>
-        <h2>✦ A Rose-Shaped Galaxy ✦</h2>
-        <div class="heart-symbol">❤️</div>
-        <div class="sub-message">
-            Every star in this sky burns with a whisper of your name.<br>
-            This universe was made from the light in your eyes.
+        <h1>My Rose Galaxy</h1>
+        <div class="subtitle">✦ for the one who lights my universe ✦</div>
+        <div class="heart-row">
+            <span>❤️</span>
+            <span>🌹</span>
+            <span>❤️</span>
         </div>
+        <div class="message">
+            Every petal is a whisper of my love,<br />
+            every star a promise written in light.<br />
+            You are my everything.
+        </div>
+        <div class="tiny">— touch the sky to send hearts flying —</div>
     </div>
 
     <script>
         // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        //  ROSE GALAXY  –  For Her
+        //  ROSE GALAXY  –  A love letter in light
         // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
-        let W, H, centerX, centerY;
+        let W, H, cx, cy;
 
         function resize() {
             W = canvas.width = window.innerWidth;
             H = canvas.height = window.innerHeight;
-            centerX = W / 2;
-            centerY = H / 2;
+            cx = W / 2;
+            cy = H / 2;
         }
         window.addEventListener('resize', resize);
         resize();
 
-        // ─── utilities ───
         const rand = (a, b) => Math.random() * (b - a) + a;
         const lerp = (a, b, t) => a + (b - a) * t;
-        const dist = (x1, y1, x2, y2) => Math.hypot(x2 - x1, y2 - y1);
 
-        // ─── mouse ───
-        let mouseX = 0,
-            mouseY = 0;
-        let targetMouseX = 0,
-            targetMouseY = 0;
+        // ─── mouse / touch ───
+        let mx = 0,
+            my = 0;
+        let tmx = 0,
+            tmy = 0;
         window.addEventListener('mousemove', e => {
-            targetMouseX = (e.clientX / W - 0.5) * 2;
-            targetMouseY = (e.clientY / H - 0.5) * 2;
+            tmx = (e.clientX / W - 0.5) * 2;
+            tmy = (e.clientY / H - 0.5) * 2;
         });
         window.addEventListener('touchmove', e => {
             const t = e.touches[0];
-            targetMouseX = (t.clientX / W - 0.5) * 2;
-            targetMouseY = (t.clientY / H - 0.5) * 2;
+            tmx = (t.clientX / W - 0.5) * 2;
+            tmy = (t.clientY / H - 0.5) * 2;
         }, { passive: true });
 
-        // ─── stars (background) ───
-        const STAR_COUNT = 380;
+        // ─── background stars ───
+        const STAR_COUNT = 450;
         const stars = [];
         for (let i = 0; i < STAR_COUNT; i++) {
             stars.push({
                 x: rand(0, W),
                 y: rand(0, H),
-                r: rand(0.3, 1.8),
-                baseBright: rand(0.3, 1),
-                speed: rand(0.008, 0.035),
+                r: rand(0.2, 2.0),
+                bright: rand(0.3, 1),
+                speed: rand(0.006, 0.04),
                 phase: rand(0, Math.PI * 2),
-                color: `hsl(${rand(200, 280)}, ${rand(30, 70)}%, ${rand(70, 100)}%)`
+                hue: rand(200, 290),
+                sat: rand(30, 70),
+                lig: rand(70, 100)
             });
         }
 
-        // ─── rose galaxy particles ───
-        const PARTICLE_COUNT = 5200;
-        const particles = [];
-        const ROSE_PETALS = 5;
-        const GALAXY_RADIUS = Math.min(W, H) * 0.38;
-        const SPIRAL_TWIST = 2.8;
+        // ─── ROSE GALAXY PARTICLES ───
+        const PETALS = 5;
+        const ROSE_RADIUS = Math.min(W, H) * 0.35;
+        const PARTICLE_COUNT = 7500;
+        const SPIRAL_TWIST = 2.2;
 
-        // color palette: gold → pink → rose → deep purple
-        function galaxyColor(t) {
+        // Color palette: center gold → mid pink → edge deep red
+        function roseColor(t, layer) {
             // t: 0 (center) → 1 (edge)
-            const r = lerp(255, 180, t);
-            const g = lerp(200, 50, t * t);
-            const b = lerp(80, 200, t * t);
-            const a = lerp(0.95, 0.4, t);
+            // layer: 0 (inner) → 1 (outer)
+            const r = lerp(255, lerp(200, 140, layer), t);
+            const g = lerp(210, lerp(80, 30, layer), t * t);
+            const b = lerp(120, lerp(60, 20, layer), t * t);
+            const a = lerp(0.95, 0.25 + 0.2 * (1 - layer), t);
             return `rgba(${r|0}, ${g|0}, ${b|0}, ${a})`;
         }
 
-        function galaxyColorGlow(t) {
-            const r = lerp(255, 200, t);
-            const g = lerp(180, 30, t * t);
-            const b = lerp(60, 220, t * t);
-            return `rgba(${r|0}, ${g|0}, ${b|0}, 0.25)`;
+        function roseGlow(t, layer) {
+            const r = lerp(255, lerp(180, 100, layer), t);
+            const g = lerp(150, lerp(50, 20, layer), t * t);
+            const b = lerp(80, lerp(40, 15, layer), t * t);
+            return `rgba(${r|0}, ${g|0}, ${b|0}, 0.15)`;
         }
 
-        // Build particles
+        const particles = [];
+
+        // Build the rose galaxy
         for (let i = 0; i < PARTICLE_COUNT; i++) {
-            // choose a petal
-            const petal = Math.floor(rand(0, ROSE_PETALS));
-            const petalAngle = (petal / ROSE_PETALS) * Math.PI * 2;
+            // Which petal
+            const petal = Math.floor(rand(0, PETALS));
+            const petalAngle = (petal / PETALS) * Math.PI * 2;
 
-            // position along petal: 0=center, 1=tip
-            const pos = Math.pow(rand(0.02, 1), 0.7);
-            const angleOffset = rand(-0.35, 0.35) * (1 - pos * 0.5);
-            const theta = petalAngle + angleOffset + pos * (Math.PI * 2 / ROSE_PETALS) * 0.6;
+            // Position along petal: 0=center, 1=tip
+            const pos = Math.pow(rand(0.02, 1), 0.6);
 
-            // rose curve: r = R * cos(k * theta / 2)  (with spiral twist)
-            const roseR = Math.cos(ROSE_PETALS * theta / 2);
-            const radial = Math.abs(roseR) * pos * GALAXY_RADIUS * 0.85;
+            // Angle spread: wider at tip, tighter at center
+            const spread = lerp(0.08, 0.45, pos);
+            const angleOff = rand(-spread, spread);
 
-            // add some spiral distortion
-            const spiralOffset = pos * SPIRAL_TWIST * 0.3;
-            const finalTheta = theta + spiralOffset;
+            // Base angle for this particle on the rose curve
+            let theta = petalAngle + angleOff;
 
-            const x = centerX + radial * Math.cos(finalTheta) + rand(-1.2, 1.2) * (1 + pos * 2);
-            const y = centerY + radial * Math.sin(finalTheta) + rand(-1.2, 1.2) * (1 + pos * 2);
+            // Rose curve: r = R * cos(k * theta / 2) for 5 petals with natural look
+            // Using cos(5*theta/2) gives 5 petals when k is odd
+            const roseR = Math.cos(PETALS * theta / 2);
+            const radial = Math.abs(roseR) * pos * ROSE_RADIUS * 0.9;
 
-            // size: smaller near edges, larger near center
-            const size = lerp(rand(1.8, 4.5), rand(0.4, 1.8), pos);
+            // Spiral twist: arms curl as they go outward
+            const twist = pos * SPIRAL_TWIST * 0.4;
+            theta += twist;
 
-            // color
-            const colorT = pos;
-            const color = galaxyColor(colorT);
+            // Add some randomness for galaxy feel
+            const jitter = (1 + pos * 2) * 0.8;
+            const x = cx + radial * Math.cos(theta) + rand(-jitter, jitter);
+            const y = cy + radial * Math.sin(theta) + rand(-jitter, jitter);
 
-            // glow color
-            const glow = galaxyColorGlow(colorT);
+            // Layer: inner vs outer petals
+            const layer = pos;
 
-            // rotation speed (slightly different per particle)
-            const rotSpeed = rand(0.0004, 0.0012) * (1 - pos * 0.5);
+            // Size: bigger near center, smaller at edges
+            const size = lerp(rand(1.5, 4.5), rand(0.3, 1.8), pos);
 
-            // phase offset for twinkling
+            // Color
+            const color = roseColor(pos, layer);
+            const glow = roseGlow(pos, layer);
+
+            // Animation
+            const rotSpeed = rand(0.0002, 0.001) * (1 - pos * 0.6);
             const phase = rand(0, Math.PI * 2);
+            const driftX = rand(-0.4, 0.4);
+            const driftY = rand(-0.4, 0.4);
+            const driftSpeed = rand(0.0002, 0.0012);
 
             particles.push({
                 x,
@@ -278,38 +319,66 @@
                 baseX: x,
                 baseY: y,
                 radial,
-                theta: finalTheta,
+                theta,
                 pos,
                 size,
                 color,
                 glow,
                 rotSpeed,
                 phase,
-                petal,
-                angleOffset,
-                // for drifting
-                driftX: rand(-0.3, 0.3),
-                driftY: rand(-0.3, 0.3),
-                driftSpeed: rand(0.0003, 0.001),
-                driftPhase: rand(0, Math.PI * 2)
+                driftX,
+                driftY,
+                driftSpeed,
+                driftPhase: rand(0, Math.PI * 2),
+                layer
             });
         }
 
-        // ─── hearts ───
-        const HEART_COUNT = 45;
+        // ─── extra center glow particles ───
+        const CENTER_COUNT = 400;
+        for (let i = 0; i < CENTER_COUNT; i++) {
+            const r = rand(0, ROSE_RADIUS * 0.15);
+            const a = rand(0, Math.PI * 2);
+            const x = cx + r * Math.cos(a);
+            const y = cy + r * Math.sin(a);
+            particles.push({
+                x,
+                y,
+                baseX: x,
+                baseY: y,
+                radial: r,
+                theta: a,
+                pos: 0.02,
+                size: rand(0.8, 2.5),
+                color: `rgba(255, 230, 180, ${rand(0.3, 0.8)})`,
+                glow: 'rgba(255, 200, 150, 0.2)',
+                rotSpeed: rand(0.0005, 0.002),
+                phase: rand(0, Math.PI * 2),
+                driftX: rand(-0.1, 0.1),
+                driftY: rand(-0.1, 0.1),
+                driftSpeed: rand(0.0005, 0.0015),
+                driftPhase: rand(0, Math.PI * 2),
+                layer: 0,
+                isCore: true
+            });
+        }
+
+        // ─── floating hearts ───
+        const HEART_COUNT = 55;
         const hearts = [];
         for (let i = 0; i < HEART_COUNT; i++) {
             hearts.push({
                 x: rand(0, W),
                 y: rand(0, H),
-                size: rand(8, 28),
-                speedY: rand(0.2, 0.9),
-                sway: rand(0.3, 1.2),
+                size: rand(8, 32),
+                speed: rand(0.15, 0.8),
+                sway: rand(0.3, 1.4),
                 phase: rand(0, Math.PI * 2),
-                opacity: rand(0.2, 0.8),
-                pulseSpeed: rand(0.015, 0.04),
+                opacity: rand(0.15, 0.7),
+                pulseSpeed: rand(0.012, 0.045),
                 pulsePhase: rand(0, Math.PI * 2),
-                color: `hsla(${rand(330, 360)}, 90%, ${rand(55, 80)}%, `
+                hue: rand(330, 365),
+                light: rand(50, 80)
             });
         }
 
@@ -317,225 +386,283 @@
         let shootingStars = [];
 
         function spawnShootingStar() {
-            const angle = rand(-Math.PI * 0.4, -Math.PI * 0.15);
-            const speed = rand(6, 18);
-            const length = rand(80, 250);
-            const x = rand(0, W * 0.6);
-            const y = rand(0, H * 0.4);
+            const angle = rand(-Math.PI * 0.45, -Math.PI * 0.1);
+            const speed = rand(8, 22);
+            const x = rand(0, W * 0.7);
+            const y = rand(0, H * 0.35);
             shootingStars.push({
                 x,
                 y,
                 vx: Math.cos(angle) * speed,
                 vy: Math.sin(angle) * speed,
-                length,
+                length: rand(100, 300),
                 life: 1,
-                decay: rand(0.005, 0.018),
-                width: rand(1.5, 4)
+                decay: rand(0.004, 0.02),
+                width: rand(1.5, 4.5),
+                hue: rand(280, 340)
             });
         }
 
-        // spawn a few initially
-        for (let i = 0; i < 3; i++) {
-            setTimeout(() => spawnShootingStar(), i * 1200 + 500);
+        for (let i = 0; i < 4; i++) {
+            setTimeout(spawnShootingStar, i * 1400 + 600);
         }
-        setInterval(spawnShootingStar, rand(4000, 9000));
+        setInterval(() => {
+            if (Math.random() < 0.4) spawnShootingStar();
+        }, rand(3000, 8000));
+
+        // ─── click → heart burst ───
+        canvas.addEventListener('click', (e) => {
+            const cx2 = e.clientX;
+            const cy2 = e.clientY;
+            for (let i = 0; i < 24; i++) {
+                const angle = rand(0, Math.PI * 2);
+                const speed = rand(2, 7);
+                const h = {
+                    x: cx2,
+                    y: cy2,
+                    size: rand(10, 30),
+                    speed: rand(0.3, 1.4),
+                    sway: rand(0.5, 1.8),
+                    phase: rand(0, Math.PI * 2),
+                    opacity: rand(0.4, 0.9),
+                    pulseSpeed: rand(0.02, 0.06),
+                    pulsePhase: rand(0, Math.PI * 2),
+                    hue: rand(330, 365),
+                    light: rand(50, 85),
+                    vx: Math.cos(angle) * speed,
+                    vy: Math.sin(angle) * speed - 1.5,
+                    burst: true
+                };
+                hearts.push(h);
+                setTimeout(() => {
+                    const idx = hearts.indexOf(h);
+                    if (idx > -1) hearts.splice(idx, 1);
+                }, 7000);
+            }
+        });
 
         // ─── animation loop ───
         let time = 0;
-        let frame = 0;
 
         function draw() {
-            frame++;
-            time += 0.005;
+            time += 0.006;
 
             // smooth mouse
-            mouseX += (targetMouseX - mouseX) * 0.04;
-            mouseY += (targetMouseY - mouseY) * 0.04;
+            mx += (tmx - mx) * 0.045;
+            my += (tmy - my) * 0.045;
 
             // ── clear ──
             ctx.clearRect(0, 0, W, H);
 
-            // ── deep space background ──
-            const grad = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, Math.max(W, H) * 0.9);
-            grad.addColorStop(0, '#12081f');
-            grad.addColorStop(0.35, '#0c0818');
-            grad.addColorStop(0.7, '#070410');
-            grad.addColorStop(1, '#03020a');
-            ctx.fillStyle = grad;
+            // ── deep space ──
+            const bg = ctx.createRadialGradient(cx, cy, 0, cx, cy, Math.max(W, H) * 0.95);
+            bg.addColorStop(0, '#150d2a');
+            bg.addColorStop(0.3, '#0e0920');
+            bg.addColorStop(0.65, '#08051a');
+            bg.addColorStop(1, '#04020e');
+            ctx.fillStyle = bg;
             ctx.fillRect(0, 0, W, H);
 
-            // ── background nebula glow ──
-            const nebX = centerX + Math.sin(time * 0.015) * 120;
-            const nebY = centerY + Math.cos(time * 0.02) * 80;
-            const nebGrad = ctx.createRadialGradient(nebX, nebY, 0, nebX, nebY, 400);
-            nebGrad.addColorStop(0, 'rgba(120, 20, 80, 0.06)');
-            nebGrad.addColorStop(0.5, 'rgba(60, 10, 100, 0.05)');
-            nebGrad.addColorStop(1, 'rgba(0,0,0,0)');
-            ctx.fillStyle = nebGrad;
-            ctx.fillRect(0, 0, W, H);
+            // ── nebula glows ──
+            for (let n = 0; n < 3; n++) {
+                const nx = cx + Math.sin(time * 0.012 + n * 2.1) * 180;
+                const ny = cy + Math.cos(time * 0.015 + n * 1.7) * 120;
+                const ng = ctx.createRadialGradient(nx, ny, 0, nx, ny, 320 + n * 80);
+                const al = 0.04 + n * 0.015;
+                ng.addColorStop(0, `rgba(140, 40, 120, ${al})`);
+                ng.addColorStop(0.5, `rgba(80, 20, 100, ${al * 0.6})`);
+                ng.addColorStop(1, 'rgba(0,0,0,0)');
+                ctx.fillStyle = ng;
+                ctx.fillRect(0, 0, W, H);
+            }
 
-            const nebX2 = centerX - Math.sin(time * 0.02 + 1) * 200;
-            const nebY2 = centerY + Math.cos(time * 0.018 + 0.5) * 150;
-            const nebGrad2 = ctx.createRadialGradient(nebX2, nebY2, 0, nebX2, nebY2, 350);
-            nebGrad2.addColorStop(0, 'rgba(80, 20, 140, 0.05)');
-            nebGrad2.addColorStop(1, 'rgba(0,0,0,0)');
-            ctx.fillStyle = nebGrad2;
-            ctx.fillRect(0, 0, W, H);
-
-            // ── background stars (twinkling) ──
+            // ── background stars ──
             for (const s of stars) {
-                const bright = s.baseBright * (0.6 + 0.4 * Math.sin(time * s.speed * 15 + s.phase));
-                const alpha = bright * 0.9;
+                const b = s.bright * (0.6 + 0.4 * Math.sin(time * s.speed * 18 + s.phase));
+                const a = b * 0.9;
                 ctx.beginPath();
-                ctx.arc(s.x, s.y, s.r * (0.7 + 0.3 * Math.sin(time * s.speed * 12 + s.phase + 1)), 0, Math.PI * 2);
-                ctx.fillStyle = s.color.replace(')', `, ${alpha})`).replace('hsl', 'hsla');
+                ctx.arc(s.x, s.y, s.r * (0.6 + 0.4 * Math.sin(time * s.speed * 14 + s.phase + 0.5)), 0, Math.PI * 2);
+                ctx.fillStyle = `hsla(${s.hue}, ${s.sat}%, ${s.lig}%, ${a})`;
                 ctx.fill();
-
-                // occasional glint on larger stars
-                if (s.r > 1.2 && bright > 0.7) {
-                    const glint = (bright - 0.7) / 0.3 * 0.3;
-                    ctx.shadowColor = 'rgba(255,255,255,0.2)';
-                    ctx.shadowBlur = 6;
+                if (s.r > 1.4 && b > 0.7) {
+                    ctx.shadowColor = `hsla(${s.hue}, 100%, 100%, ${(b - 0.7) * 0.2})`;
+                    ctx.shadowBlur = 10;
                     ctx.beginPath();
-                    ctx.arc(s.x, s.y, s.r * 1.8, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(255,255,255,${glint * 0.15})`;
+                    ctx.arc(s.x, s.y, s.r * 2, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(255,255,255,${(b - 0.7) * 0.08})`;
                     ctx.fill();
                     ctx.shadowBlur = 0;
                 }
             }
 
-            // ── rose galaxy ──
-            const galaxyAngle = time * 0.06;
-            const tiltX = mouseX * 0.06;
-            const tiltY = mouseY * 0.04;
+            // ── ROSE GALAXY ──
+            const rot = time * 0.045;
+            const tiltX = mx * 0.07;
+            const tiltY = my * 0.05;
 
-            // sort particles by size for proper layering (bigger in back)
+            // Sort: draw larger (background) first
             const sorted = [...particles].sort((a, b) => a.size - b.size);
 
-            // first pass: glow
+            // Glow pass
             for (const p of sorted) {
-                const angleOff = p.theta + galaxyAngle * p.rotSpeed * 180;
-                const rOff = p.radial * (1 + Math.sin(time * p.driftSpeed * 20 + p.driftPhase) * 0.012);
+                const angleOff = p.theta + rot * p.rotSpeed * 200;
+                const rOff = p.radial * (1 + Math.sin(time * p.driftSpeed * 25 + p.driftPhase) * 0.015);
 
-                const cx = p.baseX + Math.sin(time * p.driftSpeed * 12 + p.driftPhase) * p.driftX * 1.2;
-                const cy = p.baseY + Math.cos(time * p.driftSpeed * 14 + p.driftPhase + 0.5) * p.driftY * 1.2;
+                const cx2 = p.baseX + Math.sin(time * p.driftSpeed * 16 + p.driftPhase) * p.driftX * 1.5;
+                const cy2 = p.baseY + Math.cos(time * p.driftSpeed * 18 + p.driftPhase + 0.7) * p.driftY * 1.5;
 
-                // apply galaxy rotation
-                const cosA = Math.cos(galaxyAngle * p.rotSpeed * 120 + tiltX * 0.3);
-                const sinA = Math.sin(galaxyAngle * p.rotSpeed * 120 + tiltX * 0.3);
-                const dx = cx - centerX;
-                const dy = cy - centerY;
+                const cosA = Math.cos(rot * p.rotSpeed * 150 + tiltX * 0.25);
+                const sinA = Math.sin(rot * p.rotSpeed * 150 + tiltX * 0.25);
+                const dx = cx2 - cx;
+                const dy = cy2 - cy;
                 const rx = dx * cosA - dy * sinA;
                 const ry = dx * sinA + dy * cosA;
-                const fx = centerX + rx + tiltY * 0.2 * (p.pos * 30);
-                const fy = centerY + ry + tiltX * 0.2 * (p.pos * 30);
+                const fx = cx + rx + tiltY * 0.15 * (p.pos * 40);
+                const fy = cy + ry + tiltX * 0.15 * (p.pos * 40);
 
-                // glow
-                const glowSize = p.size * 5 + 6;
-                const alpha = 0.08 + 0.08 * Math.sin(time * 0.03 + p.phase);
+                const gs = p.size * 5 + 8;
+                const al = 0.06 + 0.08 * Math.sin(time * 0.025 + p.phase);
                 ctx.beginPath();
-                ctx.arc(fx, fy, glowSize, 0, Math.PI * 2);
-                ctx.fillStyle = p.glow.replace('0.25', alpha);
+                ctx.arc(fx, fy, gs, 0, Math.PI * 2);
+                ctx.fillStyle = p.glow || `rgba(200,80,120,${al})`;
                 ctx.fill();
             }
 
-            // second pass: particles
+            // Particle pass
             for (const p of sorted) {
-                const angleOff = p.theta + galaxyAngle * p.rotSpeed * 180;
-                const rOff = p.radial * (1 + Math.sin(time * p.driftSpeed * 20 + p.driftPhase) * 0.012);
+                const angleOff = p.theta + rot * p.rotSpeed * 200;
+                const rOff = p.radial * (1 + Math.sin(time * p.driftSpeed * 25 + p.driftPhase) * 0.015);
 
-                const cx = p.baseX + Math.sin(time * p.driftSpeed * 12 + p.driftPhase) * p.driftX * 1.2;
-                const cy = p.baseY + Math.cos(time * p.driftSpeed * 14 + p.driftPhase + 0.5) * p.driftY * 1.2;
+                const cx2 = p.baseX + Math.sin(time * p.driftSpeed * 16 + p.driftPhase) * p.driftX * 1.5;
+                const cy2 = p.baseY + Math.cos(time * p.driftSpeed * 18 + p.driftPhase + 0.7) * p.driftY * 1.5;
 
-                // apply galaxy rotation
-                const cosA = Math.cos(galaxyAngle * p.rotSpeed * 120 + tiltX * 0.3);
-                const sinA = Math.sin(galaxyAngle * p.rotSpeed * 120 + tiltX * 0.3);
-                const dx = cx - centerX;
-                const dy = cy - centerY;
+                const cosA = Math.cos(rot * p.rotSpeed * 150 + tiltX * 0.25);
+                const sinA = Math.sin(rot * p.rotSpeed * 150 + tiltX * 0.25);
+                const dx = cx2 - cx;
+                const dy = cy2 - cy;
                 const rx = dx * cosA - dy * sinA;
                 const ry = dx * sinA + dy * cosA;
-                const fx = centerX + rx + tiltY * 0.2 * (p.pos * 30);
-                const fy = centerY + ry + tiltX * 0.2 * (p.pos * 30);
+                const fx = cx + rx + tiltY * 0.15 * (p.pos * 40);
+                const fy = cy + ry + tiltX * 0.15 * (p.pos * 40);
 
-                // twinkle
-                const twinkle = 0.7 + 0.3 * Math.sin(time * 0.04 + p.phase + p.pos * 5);
-                const size = p.size * (0.85 + 0.15 * Math.sin(time * 0.03 + p.phase * 0.5));
+                const twinkle = 0.7 + 0.3 * Math.sin(time * 0.035 + p.phase + p.pos * 6);
+                const sz = p.size * (0.8 + 0.2 * Math.sin(time * 0.025 + p.phase * 0.7));
 
-                // shadow for glow
                 ctx.shadowColor = p.color;
-                ctx.shadowBlur = size * 3 + 4;
+                ctx.shadowBlur = sz * 3 + 4;
 
                 ctx.beginPath();
-                ctx.arc(fx, fy, size * twinkle, 0, Math.PI * 2);
+                ctx.arc(fx, fy, sz * twinkle, 0, Math.PI * 2);
                 ctx.fillStyle = p.color;
                 ctx.fill();
 
-                // extra bright core for center particles
-                if (p.pos < 0.3) {
+                // Core brightness
+                if (p.pos < 0.25 || p.isCore) {
                     ctx.shadowBlur = 0;
+                    const coreAl = 0.3 + 0.3 * Math.sin(time * 0.04 + p.phase);
                     ctx.beginPath();
-                    ctx.arc(fx, fy, size * 0.3 * twinkle, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(255, 240, 200, ${0.4 + 0.3 * Math.sin(time * 0.05 + p.phase)})`;
+                    ctx.arc(fx, fy, sz * 0.3 * twinkle, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(255, 240, 200, ${coreAl})`;
                     ctx.fill();
                 }
                 ctx.shadowBlur = 0;
             }
 
             // ── galaxy center glow ──
-            const centerGlow = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, 80);
-            centerGlow.addColorStop(0, 'rgba(255, 200, 150, 0.25)');
-            centerGlow.addColorStop(0.3, 'rgba(255, 120, 180, 0.15)');
-            centerGlow.addColorStop(1, 'rgba(200, 50, 150, 0)');
-            ctx.fillStyle = centerGlow;
+            const cg = ctx.createRadialGradient(cx, cy, 0, cx, cy, 120);
+            cg.addColorStop(0, 'rgba(255, 200, 150, 0.35)');
+            cg.addColorStop(0.3, 'rgba(255, 130, 180, 0.2)');
+            cg.addColorStop(0.7, 'rgba(200, 60, 140, 0.08)');
+            cg.addColorStop(1, 'rgba(150, 30, 100, 0)');
+            ctx.fillStyle = cg;
             ctx.beginPath();
-            ctx.arc(centerX, centerY, 80, 0, Math.PI * 2);
+            ctx.arc(cx, cy, 120, 0, Math.PI * 2);
             ctx.fill();
+
+            // ── center sparkle ──
+            const sp = 0.5 + 0.5 * Math.sin(time * 0.06);
+            ctx.shadowColor = `rgba(255, 200, 220, ${0.4 * sp})`;
+            ctx.shadowBlur = 80;
+            ctx.beginPath();
+            ctx.arc(cx, cy, 2 + sp * 4, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(255, 245, 235, ${0.6 + 0.4 * sp})`;
+            ctx.fill();
+            ctx.shadowBlur = 0;
+
+            // ── light rays ──
+            for (let i = 0; i < 8; i++) {
+                const a = time * 0.018 + i * (Math.PI / 4);
+                const r1 = 80 + 15 * Math.sin(time * 0.03 + i * 1.2);
+                const r2 = 150 + 25 * Math.sin(time * 0.025 + i * 1.5 + 0.7);
+                const x1 = cx + Math.cos(a) * r1;
+                const y1 = cy + Math.sin(a) * r1;
+                const x2 = cx + Math.cos(a + 0.05) * r2;
+                const y2 = cy + Math.sin(a + 0.05) * r2;
+                const g2 = ctx.createLinearGradient(x1, y1, x2, y2);
+                const al2 = 0.015 + 0.02 * Math.sin(time * 0.025 + i);
+                g2.addColorStop(0, `rgba(255, 160, 200, ${al2})`);
+                g2.addColorStop(1, 'rgba(255, 100, 180, 0)');
+                ctx.beginPath();
+                ctx.moveTo(x1, y1);
+                ctx.lineTo(x2, y2);
+                ctx.strokeStyle = g2;
+                ctx.lineWidth = 50 + 20 * Math.sin(time * 0.02 + i);
+                ctx.lineCap = 'round';
+                ctx.stroke();
+            }
 
             // ── floating hearts ──
             for (const h of hearts) {
-                // drift upward with sway
-                h.y -= h.speedY * 0.25;
-                h.x += Math.sin(time * h.sway * 0.6 + h.phase) * 0.3;
-                h.phase += 0.008;
-
-                // reset if off screen
-                if (h.y < -50) {
-                    h.y = H + 30;
-                    h.x = rand(0, W);
-                    h.size = rand(8, 28);
-                    h.speedY = rand(0.2, 0.9);
-                    h.opacity = rand(0.2, 0.7);
+                if (h.burst) {
+                    h.x += h.vx || 0;
+                    h.y += h.vy || 0;
+                    h.vy = (h.vy || 0) + 0.02;
+                    h.vx = (h.vx || 0) * 0.99;
+                    h.phase += 0.03;
+                    if (h.y > H + 50) { h.opacity = 0; }
+                } else {
+                    h.y -= h.speed * 0.2;
+                    h.x += Math.sin(time * h.sway * 0.5 + h.phase) * 0.25;
+                    h.phase += 0.01;
+                    if (h.y < -60) {
+                        h.y = H + 40;
+                        h.x = rand(0, W);
+                        h.size = rand(8, 32);
+                        h.speed = rand(0.15, 0.8);
+                        h.opacity = rand(0.15, 0.7);
+                    }
                 }
 
-                const pulse = 1 + 0.15 * Math.sin(time * h.pulseSpeed * 20 + h.pulsePhase);
-                const size = h.size * pulse;
-                const alpha = h.opacity * (0.8 + 0.2 * Math.sin(time * 0.02 + h.phase));
+                const pulse = 1 + 0.18 * Math.sin(time * h.pulseSpeed * 18 + h.pulsePhase);
+                const sz = h.size * pulse;
+                const al = h.opacity * (0.8 + 0.2 * Math.sin(time * 0.02 + h.phase));
 
-                // glow
-                ctx.shadowColor = `rgba(255, 50, 100, 0.3)`;
-                ctx.shadowBlur = 20;
+                if (al < 0.01) continue;
 
-                // draw heart
+                ctx.shadowColor = `rgba(255, 50, 100, 0.25)`;
+                ctx.shadowBlur = 25;
+
                 ctx.save();
                 ctx.translate(h.x, h.y);
-                const s = size / 20;
-                ctx.scale(s, s);
+                const sc = sz / 22;
+                ctx.scale(sc, sc);
+
                 ctx.beginPath();
                 ctx.moveTo(0, 5);
-                ctx.bezierCurveTo(-10, -5, -18, 5, 0, 18);
-                ctx.bezierCurveTo(18, 5, 10, -5, 0, 5);
+                ctx.bezierCurveTo(-11, -6, -20, 6, 0, 20);
+                ctx.bezierCurveTo(20, 6, 11, -6, 0, 5);
                 ctx.closePath();
-                ctx.fillStyle = h.color + `${alpha})`;
+                ctx.fillStyle = `hsla(${h.hue || 345}, 90%, ${h.light || 65}%, ${al})`;
                 ctx.fill();
 
-                // inner highlight
+                // highlight
                 ctx.shadowBlur = 0;
                 ctx.beginPath();
                 ctx.moveTo(0, 7);
-                ctx.bezierCurveTo(-4, 3, -8, 7, 0, 14);
-                ctx.bezierCurveTo(8, 7, 4, 3, 0, 7);
+                ctx.bezierCurveTo(-5, 3, -10, 7, 0, 15);
+                ctx.bezierCurveTo(10, 7, 5, 3, 0, 7);
                 ctx.closePath();
-                ctx.fillStyle = `rgba(255, 255, 255, ${alpha * 0.15})`;
+                ctx.fillStyle = `rgba(255,255,255,${al * 0.12})`;
                 ctx.fill();
 
                 ctx.restore();
@@ -551,125 +678,58 @@
                 s.vx *= 0.998;
                 s.vy *= 0.998;
 
-                if (s.life <= 0 || s.x > W + 50 || s.y > H + 50) {
+                if (s.life <= 0 || s.x > W + 60 || s.y > H + 60) {
                     shootingStars.splice(i, 1);
                     continue;
                 }
 
-                const alpha = s.life * 0.9;
-                const grad = ctx.createLinearGradient(s.x, s.y, s.x - s.vx * 2.5, s.y - s.vy * 2.5);
-                grad.addColorStop(0, `rgba(255, 255, 255, ${alpha})`);
-                grad.addColorStop(0.4, `rgba(255, 220, 255, ${alpha * 0.6})`);
-                grad.addColorStop(1, `rgba(255, 200, 255, 0)`);
+                const al = s.life * 0.9;
+                const grad = ctx.createLinearGradient(s.x, s.y, s.x - s.vx * 3, s.y - s.vy * 3);
+                grad.addColorStop(0, `rgba(255, 255, 255, ${al})`);
+                grad.addColorStop(0.3, `rgba(255, 210, 255, ${al * 0.6})`);
+                grad.addColorStop(1, `rgba(200, 150, 255, 0)`);
 
-                ctx.shadowColor = `rgba(255, 200, 255, ${alpha * 0.3})`;
-                ctx.shadowBlur = 30;
+                ctx.shadowColor = `rgba(220, 180, 255, ${al * 0.3})`;
+                ctx.shadowBlur = 35;
                 ctx.beginPath();
+                const tx = s.x - s.vx * 3;
+                const ty = s.y - s.vy * 3;
                 ctx.moveTo(s.x, s.y);
-                const tailX = s.x - s.vx * 2.5;
-                const tailY = s.y - s.vy * 2.5;
-                ctx.lineTo(tailX, tailY);
+                ctx.lineTo(tx, ty);
                 ctx.strokeStyle = grad;
                 ctx.lineWidth = s.width * s.life;
                 ctx.lineCap = 'round';
                 ctx.stroke();
 
-                // bright head
-                ctx.shadowBlur = 40;
+                ctx.shadowBlur = 50;
                 ctx.beginPath();
-                ctx.arc(s.x, s.y, s.width * s.life * 1.2, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(255, 255, 255, ${alpha * 0.9})`;
+                ctx.arc(s.x, s.y, s.width * s.life * 1.4, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 255, 255, ${al * 0.9})`;
                 ctx.fill();
-
                 ctx.shadowBlur = 0;
             }
-
-            // ── subtle light rays from galaxy center ──
-            if (frame % 2 === 0) {
-                for (let i = 0; i < 6; i++) {
-                    const a = time * 0.02 + i * (Math.PI / 3);
-                    const r1 = 120 + 20 * Math.sin(time * 0.04 + i);
-                    const r2 = 180 + 30 * Math.sin(time * 0.035 + i + 1);
-                    const x1 = centerX + Math.cos(a) * r1;
-                    const y1 = centerY + Math.sin(a) * r1;
-                    const x2 = centerX + Math.cos(a + 0.06) * r2;
-                    const y2 = centerY + Math.sin(a + 0.06) * r2;
-                    const grad2 = ctx.createLinearGradient(x1, y1, x2, y2);
-                    grad2.addColorStop(0, `rgba(255, 150, 200, ${0.02 + 0.02 * Math.sin(time * 0.03 + i)})`);
-                    grad2.addColorStop(1, 'rgba(255, 100, 180, 0)');
-                    ctx.shadowBlur = 0;
-                    ctx.beginPath();
-                    ctx.moveTo(x1, y1);
-                    ctx.lineTo(x2, y2);
-                    ctx.strokeStyle = grad2;
-                    ctx.lineWidth = 60;
-                    ctx.lineCap = 'round';
-                    ctx.stroke();
-                }
-            }
-
-            // ── center sparkle ──
-            const sparkle = 0.5 + 0.5 * Math.sin(time * 0.07);
-            ctx.shadowColor = `rgba(255, 180, 200, ${0.3 * sparkle})`;
-            ctx.shadowBlur = 60;
-            ctx.beginPath();
-            ctx.arc(centerX, centerY, 2 + sparkle * 3, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(255, 240, 230, ${0.5 + 0.4 * sparkle})`;
-            ctx.fill();
-            ctx.shadowBlur = 0;
 
             requestAnimationFrame(draw);
         }
 
         draw();
 
-        // ─── handle resize for particles ───
+        // ─── resize ───
         window.addEventListener('resize', () => {
             resize();
-            // reposition stars
             for (const s of stars) {
                 s.x = rand(0, W);
                 s.y = rand(0, H);
             }
-            // reposition hearts
             for (const h of hearts) {
-                h.x = rand(0, W);
-                h.y = rand(0, H);
+                if (!h.burst) {
+                    h.x = rand(0, W);
+                    h.y = rand(0, H);
+                }
             }
         });
 
-        // ─── small easter egg: click creates a burst of hearts ───
-        canvas.addEventListener('click', (e) => {
-            const cx = e.clientX;
-            const cy = e.clientY;
-            for (let i = 0; i < 16; i++) {
-                const angle = rand(0, Math.PI * 2);
-                const speed = rand(2, 6);
-                const h = {
-                    x: cx,
-                    y: cy,
-                    size: rand(10, 26),
-                    speedY: rand(0.3, 1.2),
-                    sway: rand(0.5, 1.5),
-                    phase: rand(0, Math.PI * 2),
-                    opacity: rand(0.5, 0.9),
-                    pulseSpeed: rand(0.02, 0.05),
-                    pulsePhase: rand(0, Math.PI * 2),
-                    color: `hsla(${rand(330, 360)}, 90%, ${rand(55, 80)}%, `
-                };
-                // give it velocity
-                h.vx = Math.cos(angle) * speed;
-                h.vy = Math.sin(angle) * speed - 1;
-                hearts.push(h);
-                // remove after a while
-                setTimeout(() => {
-                    const idx = hearts.indexOf(h);
-                    if (idx > -1) hearts.splice(idx, 1);
-                }, 6000);
-            }
-        });
-
-        console.log('💫 Rose Galaxy — Made with love ❤️');
+        console.log('🌹 Rose Galaxy — Made with infinite love ❤️');
     </script>
 </body>
 </html>
