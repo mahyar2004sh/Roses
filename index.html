@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rose Galaxy — Forever Yours ❤️</title>
+    <title>Rose Galaxy</title>
     <style>
         * {
             margin: 0;
@@ -13,7 +13,6 @@
         body {
             background: #0a0618;
             overflow: hidden;
-            font-family: 'Georgia', 'Times New Roman', serif;
             height: 100vh;
             width: 100vw;
             user-select: none;
@@ -27,121 +26,6 @@
             z-index: 1;
         }
 
-        .overlay {
-            position: fixed;
-            z-index: 10;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: #fff;
-            text-shadow: 0 0 60px rgba(255, 50, 100, 0.6), 0 0 120px rgba(200, 30, 80, 0.3);
-            opacity: 0;
-            animation: fadeInText 4.5s ease forwards 3s;
-            padding: 1.5rem;
-        }
-
-        .overlay h1 {
-            font-size: clamp(2.8rem, 12vw, 6.2rem);
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            background: linear-gradient(135deg, #ffd9e6, #ff7aa8, #ff3b6f, #ffb3d9, #ffd9e6);
-            background-size: 400% 400%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: shimmer 8s ease-in-out infinite alternate;
-            margin-bottom: 0.15em;
-            font-family: 'Georgia', 'Times New Roman', serif;
-        }
-
-        .overlay .subtitle {
-            font-size: clamp(1rem, 3.2vw, 2rem);
-            font-weight: 300;
-            letter-spacing: 0.35em;
-            color: rgba(255, 210, 235, 0.9);
-            text-shadow: 0 0 40px rgba(255, 80, 160, 0.5);
-            margin-top: 0.2em;
-            font-style: italic;
-        }
-
-        .overlay .heart-row {
-            margin-top: 0.6em;
-            font-size: clamp(2.2rem, 5vw, 4.5rem);
-            display: flex;
-            gap: 0.5em;
-            align-items: center;
-            justify-content: center;
-            filter: drop-shadow(0 0 40px rgba(255, 50, 100, 0.7));
-        }
-
-        .overlay .heart-row span {
-            display: inline-block;
-            animation: pulseHeart 2s ease-in-out infinite;
-        }
-
-        .overlay .heart-row span:nth-child(2) {
-            animation-delay: 0.3s;
-        }
-        .overlay .heart-row span:nth-child(3) {
-            animation-delay: 0.6s;
-        }
-
-        .overlay .message {
-            font-size: clamp(0.85rem, 1.6vw, 1.3rem);
-            color: rgba(255, 200, 225, 0.7);
-            letter-spacing: 0.12em;
-            margin-top: 1.4em;
-            font-style: italic;
-            font-weight: 300;
-            max-width: 640px;
-            line-height: 1.7;
-            text-shadow: 0 0 30px rgba(200, 50, 120, 0.3);
-        }
-
-        .overlay .tiny {
-            font-size: clamp(0.6rem, 1vw, 0.85rem);
-            color: rgba(255, 180, 210, 0.4);
-            margin-top: 1.8em;
-            letter-spacing: 0.2em;
-            font-style: normal;
-        }
-
-        @keyframes fadeInText {
-            0% {
-                opacity: 0;
-                transform: scale(0.95) translateY(30px);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
-        }
-
-        @keyframes shimmer {
-            0% {
-                background-position: 0% 50%;
-            }
-            100% {
-                background-position: 100% 50%;
-            }
-        }
-
-        @keyframes pulseHeart {
-            0%,
-            100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.3);
-            }
-        }
-
         .vignette {
             position: fixed;
             z-index: 2;
@@ -153,16 +37,20 @@
             background: radial-gradient(ellipse at center, transparent 30%, rgba(10, 6, 24, 0.6) 100%);
         }
 
-        @media (max-width: 600px) {
-            .overlay h1 {
-                letter-spacing: 0.03em;
-            }
-            .overlay .subtitle {
-                letter-spacing: 0.18em;
-            }
-            .overlay .heart-row {
-                font-size: 2.5rem;
-            }
+        /* small hint – barely visible, but not text */
+        .hint {
+            position: fixed;
+            bottom: 30px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            z-index: 5;
+            pointer-events: none;
+            color: rgba(255, 80, 80, 0.2);
+            font-size: 12px;
+            letter-spacing: 2px;
+            font-family: sans-serif;
+            font-weight: 300;
         }
     </style>
 </head>
@@ -170,26 +58,11 @@
 
     <canvas id="canvas"></canvas>
     <div class="vignette"></div>
-
-    <div class="overlay">
-        <h1>My Rose Galaxy</h1>
-        <div class="subtitle">✦ for the one who lights my universe ✦</div>
-        <div class="heart-row">
-            <span>❤️</span>
-            <span>🌹</span>
-            <span>❤️</span>
-        </div>
-        <div class="message">
-            Every petal is a whisper of my love,<br />
-            every star a promise written in light.<br />
-            You are my everything.
-        </div>
-        <div class="tiny">— touch the sky to send hearts flying —</div>
-    </div>
+    <!-- No text overlays -->
 
     <script>
         // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        //  ROSE GALAXY  –  A love letter in light
+        //  ROSE-RED GALAXY  –  Pure visual love
         // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
         const canvas = document.getElementById('canvas');
@@ -223,7 +96,7 @@
             tmy = (t.clientY / H - 0.5) * 2;
         }, { passive: true });
 
-        // ─── background stars ───
+        // ─── background stars (cool white/blue to contrast red) ───
         const STAR_COUNT = 450;
         const stars = [];
         for (let i = 0; i < STAR_COUNT; i++) {
@@ -234,79 +107,56 @@
                 bright: rand(0.3, 1),
                 speed: rand(0.006, 0.04),
                 phase: rand(0, Math.PI * 2),
-                hue: rand(200, 290),
+                hue: rand(210, 260),
                 sat: rand(30, 70),
                 lig: rand(70, 100)
             });
         }
 
-        // ─── ROSE GALAXY PARTICLES ───
+        // ─── ROSE GALAXY – RED PALETTE ───
         const PETALS = 5;
         const ROSE_RADIUS = Math.min(W, H) * 0.35;
-        const PARTICLE_COUNT = 7500;
+        const PARTICLE_COUNT = 8000;
         const SPIRAL_TWIST = 2.2;
 
-        // Color palette: center gold → mid pink → edge deep red
+        // Deep rose-red colors
         function roseColor(t, layer) {
-            // t: 0 (center) → 1 (edge)
-            // layer: 0 (inner) → 1 (outer)
-            const r = lerp(255, lerp(200, 140, layer), t);
-            const g = lerp(210, lerp(80, 30, layer), t * t);
-            const b = lerp(120, lerp(60, 20, layer), t * t);
+            // t: 0 center, 1 edge
+            // layer: 0 inner, 1 outer
+            const r = lerp(255, lerp(200, 120, layer), t);
+            const g = lerp(70, lerp(30, 10, layer), t * t);
+            const b = lerp(70, lerp(30, 10, layer), t * t);
             const a = lerp(0.95, 0.25 + 0.2 * (1 - layer), t);
             return `rgba(${r|0}, ${g|0}, ${b|0}, ${a})`;
         }
 
         function roseGlow(t, layer) {
-            const r = lerp(255, lerp(180, 100, layer), t);
-            const g = lerp(150, lerp(50, 20, layer), t * t);
-            const b = lerp(80, lerp(40, 15, layer), t * t);
+            const r = lerp(255, lerp(160, 80, layer), t);
+            const g = lerp(50, lerp(20, 5, layer), t * t);
+            const b = lerp(50, lerp(20, 5, layer), t * t);
             return `rgba(${r|0}, ${g|0}, ${b|0}, 0.15)`;
         }
 
         const particles = [];
 
-        // Build the rose galaxy
         for (let i = 0; i < PARTICLE_COUNT; i++) {
-            // Which petal
             const petal = Math.floor(rand(0, PETALS));
             const petalAngle = (petal / PETALS) * Math.PI * 2;
-
-            // Position along petal: 0=center, 1=tip
             const pos = Math.pow(rand(0.02, 1), 0.6);
-
-            // Angle spread: wider at tip, tighter at center
             const spread = lerp(0.08, 0.45, pos);
             const angleOff = rand(-spread, spread);
-
-            // Base angle for this particle on the rose curve
             let theta = petalAngle + angleOff;
-
-            // Rose curve: r = R * cos(k * theta / 2) for 5 petals with natural look
-            // Using cos(5*theta/2) gives 5 petals when k is odd
             const roseR = Math.cos(PETALS * theta / 2);
             const radial = Math.abs(roseR) * pos * ROSE_RADIUS * 0.9;
-
-            // Spiral twist: arms curl as they go outward
             const twist = pos * SPIRAL_TWIST * 0.4;
             theta += twist;
-
-            // Add some randomness for galaxy feel
             const jitter = (1 + pos * 2) * 0.8;
             const x = cx + radial * Math.cos(theta) + rand(-jitter, jitter);
             const y = cy + radial * Math.sin(theta) + rand(-jitter, jitter);
-
-            // Layer: inner vs outer petals
             const layer = pos;
-
-            // Size: bigger near center, smaller at edges
             const size = lerp(rand(1.5, 4.5), rand(0.3, 1.8), pos);
-
-            // Color
             const color = roseColor(pos, layer);
             const glow = roseGlow(pos, layer);
-
-            // Animation
             const rotSpeed = rand(0.0002, 0.001) * (1 - pos * 0.6);
             const phase = rand(0, Math.PI * 2);
             const driftX = rand(-0.4, 0.4);
@@ -334,7 +184,7 @@
             });
         }
 
-        // ─── extra center glow particles ───
+        // extra center glow (golden-red)
         const CENTER_COUNT = 400;
         for (let i = 0; i < CENTER_COUNT; i++) {
             const r = rand(0, ROSE_RADIUS * 0.15);
@@ -350,8 +200,8 @@
                 theta: a,
                 pos: 0.02,
                 size: rand(0.8, 2.5),
-                color: `rgba(255, 230, 180, ${rand(0.3, 0.8)})`,
-                glow: 'rgba(255, 200, 150, 0.2)',
+                color: `rgba(255, 180, 120, ${rand(0.3, 0.8)})`,
+                glow: 'rgba(255, 150, 100, 0.2)',
                 rotSpeed: rand(0.0005, 0.002),
                 phase: rand(0, Math.PI * 2),
                 driftX: rand(-0.1, 0.1),
@@ -363,7 +213,7 @@
             });
         }
 
-        // ─── floating hearts ───
+        // ─── floating hearts (rose-red) ───
         const HEART_COUNT = 55;
         const hearts = [];
         for (let i = 0; i < HEART_COUNT; i++) {
@@ -377,12 +227,12 @@
                 opacity: rand(0.15, 0.7),
                 pulseSpeed: rand(0.012, 0.045),
                 pulsePhase: rand(0, Math.PI * 2),
-                hue: rand(330, 365),
+                hue: rand(340, 365),
                 light: rand(50, 80)
             });
         }
 
-        // ─── shooting stars ───
+        // ─── shooting stars (red-tinted) ───
         let shootingStars = [];
 
         function spawnShootingStar() {
@@ -399,7 +249,7 @@
                 life: 1,
                 decay: rand(0.004, 0.02),
                 width: rand(1.5, 4.5),
-                hue: rand(280, 340)
+                hue: rand(340, 360)
             });
         }
 
@@ -427,7 +277,7 @@
                     opacity: rand(0.4, 0.9),
                     pulseSpeed: rand(0.02, 0.06),
                     pulsePhase: rand(0, Math.PI * 2),
-                    hue: rand(330, 365),
+                    hue: rand(340, 365),
                     light: rand(50, 85),
                     vx: Math.cos(angle) * speed,
                     vy: Math.sin(angle) * speed - 1.5,
@@ -447,36 +297,35 @@
         function draw() {
             time += 0.006;
 
-            // smooth mouse
             mx += (tmx - mx) * 0.045;
             my += (tmy - my) * 0.045;
 
-            // ── clear ──
+            // clear
             ctx.clearRect(0, 0, W, H);
 
-            // ── deep space ──
+            // deep space (dark red-black)
             const bg = ctx.createRadialGradient(cx, cy, 0, cx, cy, Math.max(W, H) * 0.95);
-            bg.addColorStop(0, '#150d2a');
-            bg.addColorStop(0.3, '#0e0920');
-            bg.addColorStop(0.65, '#08051a');
-            bg.addColorStop(1, '#04020e');
+            bg.addColorStop(0, '#1a0a10');
+            bg.addColorStop(0.3, '#12060a');
+            bg.addColorStop(0.65, '#0a0408');
+            bg.addColorStop(1, '#040206');
             ctx.fillStyle = bg;
             ctx.fillRect(0, 0, W, H);
 
-            // ── nebula glows ──
+            // nebula glows (red)
             for (let n = 0; n < 3; n++) {
                 const nx = cx + Math.sin(time * 0.012 + n * 2.1) * 180;
                 const ny = cy + Math.cos(time * 0.015 + n * 1.7) * 120;
                 const ng = ctx.createRadialGradient(nx, ny, 0, nx, ny, 320 + n * 80);
                 const al = 0.04 + n * 0.015;
-                ng.addColorStop(0, `rgba(140, 40, 120, ${al})`);
-                ng.addColorStop(0.5, `rgba(80, 20, 100, ${al * 0.6})`);
+                ng.addColorStop(0, `rgba(160, 20, 40, ${al})`);
+                ng.addColorStop(0.5, `rgba(100, 10, 30, ${al * 0.6})`);
                 ng.addColorStop(1, 'rgba(0,0,0,0)');
                 ctx.fillStyle = ng;
                 ctx.fillRect(0, 0, W, H);
             }
 
-            // ── background stars ──
+            // background stars
             for (const s of stars) {
                 const b = s.bright * (0.6 + 0.4 * Math.sin(time * s.speed * 18 + s.phase));
                 const a = b * 0.9;
@@ -500,7 +349,6 @@
             const tiltX = mx * 0.07;
             const tiltY = my * 0.05;
 
-            // Sort: draw larger (background) first
             const sorted = [...particles].sort((a, b) => a.size - b.size);
 
             // Glow pass
@@ -524,7 +372,7 @@
                 const al = 0.06 + 0.08 * Math.sin(time * 0.025 + p.phase);
                 ctx.beginPath();
                 ctx.arc(fx, fy, gs, 0, Math.PI * 2);
-                ctx.fillStyle = p.glow || `rgba(200,80,120,${al})`;
+                ctx.fillStyle = p.glow || `rgba(200,50,50,${al})`;
                 ctx.fill();
             }
 
@@ -556,24 +404,23 @@
                 ctx.fillStyle = p.color;
                 ctx.fill();
 
-                // Core brightness
                 if (p.pos < 0.25 || p.isCore) {
                     ctx.shadowBlur = 0;
                     const coreAl = 0.3 + 0.3 * Math.sin(time * 0.04 + p.phase);
                     ctx.beginPath();
                     ctx.arc(fx, fy, sz * 0.3 * twinkle, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(255, 240, 200, ${coreAl})`;
+                    ctx.fillStyle = `rgba(255, 180, 120, ${coreAl})`;
                     ctx.fill();
                 }
                 ctx.shadowBlur = 0;
             }
 
-            // ── galaxy center glow ──
+            // ── galaxy center glow (red-gold) ──
             const cg = ctx.createRadialGradient(cx, cy, 0, cx, cy, 120);
-            cg.addColorStop(0, 'rgba(255, 200, 150, 0.35)');
-            cg.addColorStop(0.3, 'rgba(255, 130, 180, 0.2)');
-            cg.addColorStop(0.7, 'rgba(200, 60, 140, 0.08)');
-            cg.addColorStop(1, 'rgba(150, 30, 100, 0)');
+            cg.addColorStop(0, 'rgba(255, 120, 80, 0.35)');
+            cg.addColorStop(0.3, 'rgba(200, 60, 40, 0.2)');
+            cg.addColorStop(0.7, 'rgba(150, 30, 20, 0.08)');
+            cg.addColorStop(1, 'rgba(80, 10, 10, 0)');
             ctx.fillStyle = cg;
             ctx.beginPath();
             ctx.arc(cx, cy, 120, 0, Math.PI * 2);
@@ -581,15 +428,15 @@
 
             // ── center sparkle ──
             const sp = 0.5 + 0.5 * Math.sin(time * 0.06);
-            ctx.shadowColor = `rgba(255, 200, 220, ${0.4 * sp})`;
+            ctx.shadowColor = `rgba(255, 150, 120, ${0.4 * sp})`;
             ctx.shadowBlur = 80;
             ctx.beginPath();
             ctx.arc(cx, cy, 2 + sp * 4, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(255, 245, 235, ${0.6 + 0.4 * sp})`;
+            ctx.fillStyle = `rgba(255, 200, 180, ${0.6 + 0.4 * sp})`;
             ctx.fill();
             ctx.shadowBlur = 0;
 
-            // ── light rays ──
+            // ── light rays (red) ──
             for (let i = 0; i < 8; i++) {
                 const a = time * 0.018 + i * (Math.PI / 4);
                 const r1 = 80 + 15 * Math.sin(time * 0.03 + i * 1.2);
@@ -600,8 +447,8 @@
                 const y2 = cy + Math.sin(a + 0.05) * r2;
                 const g2 = ctx.createLinearGradient(x1, y1, x2, y2);
                 const al2 = 0.015 + 0.02 * Math.sin(time * 0.025 + i);
-                g2.addColorStop(0, `rgba(255, 160, 200, ${al2})`);
-                g2.addColorStop(1, 'rgba(255, 100, 180, 0)');
+                g2.addColorStop(0, `rgba(200, 60, 60, ${al2})`);
+                g2.addColorStop(1, 'rgba(150, 30, 30, 0)');
                 ctx.beginPath();
                 ctx.moveTo(x1, y1);
                 ctx.lineTo(x2, y2);
@@ -639,7 +486,7 @@
 
                 if (al < 0.01) continue;
 
-                ctx.shadowColor = `rgba(255, 50, 100, 0.25)`;
+                ctx.shadowColor = `rgba(200, 30, 30, 0.25)`;
                 ctx.shadowBlur = 25;
 
                 ctx.save();
@@ -655,7 +502,6 @@
                 ctx.fillStyle = `hsla(${h.hue || 345}, 90%, ${h.light || 65}%, ${al})`;
                 ctx.fill();
 
-                // highlight
                 ctx.shadowBlur = 0;
                 ctx.beginPath();
                 ctx.moveTo(0, 7);
@@ -685,11 +531,11 @@
 
                 const al = s.life * 0.9;
                 const grad = ctx.createLinearGradient(s.x, s.y, s.x - s.vx * 3, s.y - s.vy * 3);
-                grad.addColorStop(0, `rgba(255, 255, 255, ${al})`);
-                grad.addColorStop(0.3, `rgba(255, 210, 255, ${al * 0.6})`);
-                grad.addColorStop(1, `rgba(200, 150, 255, 0)`);
+                grad.addColorStop(0, `rgba(255, 200, 200, ${al})`);
+                grad.addColorStop(0.3, `rgba(255, 150, 150, ${al * 0.6})`);
+                grad.addColorStop(1, `rgba(200, 80, 80, 0)`);
 
-                ctx.shadowColor = `rgba(220, 180, 255, ${al * 0.3})`;
+                ctx.shadowColor = `rgba(200, 80, 80, ${al * 0.3})`;
                 ctx.shadowBlur = 35;
                 ctx.beginPath();
                 const tx = s.x - s.vx * 3;
@@ -704,7 +550,7 @@
                 ctx.shadowBlur = 50;
                 ctx.beginPath();
                 ctx.arc(s.x, s.y, s.width * s.life * 1.4, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(255, 255, 255, ${al * 0.9})`;
+                ctx.fillStyle = `rgba(255, 220, 220, ${al * 0.9})`;
                 ctx.fill();
                 ctx.shadowBlur = 0;
             }
@@ -729,7 +575,7 @@
             }
         });
 
-        console.log('🌹 Rose Galaxy — Made with infinite love ❤️');
+        console.log('🌹 Rose-Red Galaxy — pure emotion');
     </script>
 </body>
 </html>
